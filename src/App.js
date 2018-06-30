@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-import Card from './components/card'
-import { robots } from './robots.js'
 import CardList from './components/cardList';
+import Search from './components/search';
+import { robots } from './robots';
 
 class App extends Component {
-  render() {
+
+  constructor(props){
+    super(props)
+
+    this.state = {
+      robots: robots,
+      searchfield: ''
+    }
+  }
+
+  render( robots ) {
     return (
-      <div>
-        <CardList />
+      <div className='tc'>
+        <h1>RoboFriends</h1>
+        <Search />
+        <CardList robots={robots}/>
       </div>
     );
   }

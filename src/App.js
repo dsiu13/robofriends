@@ -16,8 +16,6 @@ class App extends React.Component {
 
 searchHandler = (event) => {
   this.setState({ searchBox: event.target.value })
-  console.log(event.target.value)
-
 }
 
   render() {
@@ -25,8 +23,6 @@ searchHandler = (event) => {
     const filteredBots = robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchBox.toLowerCase());
     })
-
-    console.log(filteredBots)
 
     return (
       <div className='tc'>

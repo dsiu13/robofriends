@@ -1,7 +1,6 @@
 import React from 'react';
 import CardList from './components/cardList';
 import Search from './components/search';
-import { robots } from './robots';
 
 class App extends React.Component {
 
@@ -9,9 +8,15 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      robots: robots,
-      searchBox: ' ',
+      robots: [],
+      searchBox: ''
     }
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(users => this.setState({ robots: users }));
   }
 
 searchHandler = (event) => {

@@ -2,6 +2,7 @@ import React from 'react';
 import CardList from './components/cardList';
 import Search from './components/search';
 import Scroll from './components/scroll';
+import ErrorBoundary from './components/ErrorBoundary';
 
 class App extends React.Component {
 
@@ -35,7 +36,9 @@ searchHandler = (event) => {
         <h1>RoboFriends</h1>
         <Search searchChange={this.searchHandler}/>
         <Scroll>
-          <CardList robots={ filteredBots }/>
+          <ErrorBoundary>
+            <CardList robots={ filteredBots }/>
+          </ErrorBoundary>
         </Scroll>
 
       </div>

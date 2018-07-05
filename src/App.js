@@ -1,6 +1,7 @@
 import React from 'react';
 import CardList from './components/cardList';
 import Search from './components/search';
+import Scroll from './components/scroll';
 
 class App extends React.Component {
 
@@ -33,7 +34,10 @@ searchHandler = (event) => {
       <div className='tc'>
         <h1>RoboFriends</h1>
         <Search searchChange={this.searchHandler}/>
-        <CardList robots={ filteredBots }/>
+        <Scroll>
+          <CardList robots={ filteredBots }/>
+        </Scroll>
+
       </div>
     );
   }

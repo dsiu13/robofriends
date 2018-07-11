@@ -3,6 +3,21 @@ import CardList from './components/cardList';
 import Search from './components/search';
 import Scroll from './components/scroll';
 import ErrorBoundary from './components/ErrorBoundary';
+import { connect } from 'react-redux';
+
+import { setSearchField } from './actions/actions'
+
+const mapStateToProps = state => {
+  return {
+    searchBox: state.searchBox
+  }
+};
+
+const mapDispatchToProps  = (dispatch) => {
+  return {
+    searchHandler: (event) => dispatch(setSearchField(event.target.value))
+  }
+}
 
 class App extends React.Component {
 
@@ -27,6 +42,7 @@ searchHandler = (event) => {
 
   render() {
     const { robots, searchBox } = this.state;
+    // const { searchBox } = this.props;
     const filteredBots = robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchBox.toLowerCase());
     })
@@ -46,4 +62,4 @@ searchHandler = (event) => {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

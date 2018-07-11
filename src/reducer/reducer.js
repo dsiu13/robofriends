@@ -12,16 +12,16 @@ const initialStateSearch = {
 export const searchBots = (state=initialStateSearch, action={}) => {
   switch(action.type) {
     case CHANGE_SEARCH_FIELD:
-      return { ...state, searchBox:action.payload }
+      return Object.assign({}, state, {searchField: action.payload})
     default:
       return state;
   }
 }
 
 const initialStateRobots = {
-  isPending: false,
   robots: [],
-  err: ''
+  isPending: true
+
 }
 
 export const requestRobots = (state=initialStateRobots, action={}) => {

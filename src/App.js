@@ -1,25 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setSearchField, requestRobots } from './actions/actions'
+
 import CardList from './components/cardList';
 import Search from './components/search';
 import Scroll from './components/scroll';
 import ErrorBoundary from './components/ErrorBoundary';
-import { connect } from 'react-redux';
 
-import { setSearchField, requestRobots } from './actions/actions'
 
-const mapStateToProps = state => {
+
+const mapStateToProps = (state) => {
   return {
     searchBox: state.searchBots.searchBox,
     robots: state.requestRobots.robots,
-    isPending: state.requestRobots,
-    err: state.requestRobots
+    isPending: state.requestRobots.isPending
   }
 };
 
 const mapDispatchToProps  = (dispatch) => {
   return {
     searchChange: (event) => dispatch(setSearchField(event.target.value)),
-    onRequestRobots: () => requestRobots(dispatch)
+    onRequestRobots: () => dispatch(requestRobots())
   }
 }
 

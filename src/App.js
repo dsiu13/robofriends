@@ -36,10 +36,6 @@ class App extends React.Component {
     .then(users => this.setState({ robots: users }));
   }
 
-// searchHandler = (event) => {
-//   this.setState({ searchBox: event.target.value })
-// }
-
   render() {
     const { robots } = this.state;
     const { searchBox, searchChange } = this.props;
@@ -50,7 +46,7 @@ class App extends React.Component {
     return (
       <div className='tc'>
         <h1>RoboFriends</h1>
-        <Search searchChange={searchChange}/>
+        <Search searchChange={ searchChange }/>
         <Scroll>
           <ErrorBoundary>
             <CardList robots={ filteredBots }/>

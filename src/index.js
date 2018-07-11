@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import { Provider, connect } from 'react-redux';
-import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import registerServiceWorker from './registerServiceWorker';
 import { searchBots } from './reducer/reducer';
+import { createLogger } from 'redux-logger';
 
-const store = createStore(searchBots)
+const logger = createLogger();
+const store = createStore(searchBots, applyMiddleware(logger))
 
 ReactDOM.render(
 <Provider store={store}>

@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps  = (dispatch) => {
   return {
-    searchHandler: (event) => dispatch(setSearchField(event.target.value))
+    searchChange: (event) => dispatch(setSearchField(event.target.value))
   }
 }
 
@@ -36,13 +36,13 @@ class App extends React.Component {
     .then(users => this.setState({ robots: users }));
   }
 
-searchHandler = (event) => {
-  this.setState({ searchBox: event.target.value })
-}
+// searchHandler = (event) => {
+//   this.setState({ searchBox: event.target.value })
+// }
 
   render() {
-    const { robots, searchBox } = this.state;
-    // const { searchBox } = this.props;
+    const { robots } = this.state;
+    const { searchBox, searchChange } = this.props;
     const filteredBots = robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchBox.toLowerCase());
     })
@@ -50,7 +50,7 @@ searchHandler = (event) => {
     return (
       <div className='tc'>
         <h1>RoboFriends</h1>
-        <Search searchChange={this.searchHandler}/>
+        <Search searchChange={searchChange}/>
         <Scroll>
           <ErrorBoundary>
             <CardList robots={ filteredBots }/>

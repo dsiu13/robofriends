@@ -7,8 +7,6 @@ import Search from './components/search';
 import Scroll from './components/scroll';
 import ErrorBoundary from './components/ErrorBoundary';
 
-
-
 const mapStateToProps = (state) => {
   return {
     searchBox: state.searchBots.searchBox,
@@ -45,7 +43,7 @@ class App extends React.Component {
             <CardList robots={ filteredBots }/>
           </ErrorBoundary>
         </Scroll>
-
+  
       </div>
     );
   }
